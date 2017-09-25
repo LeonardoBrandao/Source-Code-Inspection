@@ -47,7 +47,13 @@ public class Main {
                     break;
                 case 2:
                     System.out.println("Em processo de geração de Ticket....");
-                    System.out.println(tckMachine.imprimir());
+                    String result = tckMachine.imprimir();
+                    if( result == null){
+                        System.out.println(" Ao tentar gerar seu Ticket houve um erro!! "
+                                + "Foi constatado que seu saldo é menor que o valor do Ticket!");
+                    } else {
+                        System.out.println(result);
+                    }
                     System.out.println("Por favor retire o Ticket!");
                     break;
                 case 3:

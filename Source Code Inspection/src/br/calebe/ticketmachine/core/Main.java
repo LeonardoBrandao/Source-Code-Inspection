@@ -16,6 +16,8 @@ public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         TicketMachine tckMachine = new TicketMachine(20);
+        Troco troco;
+        
         int menu;
         int valorDinheiro;
         int exit;
@@ -57,7 +59,8 @@ public class Main {
                     System.out.println("Por favor retire o Ticket!");
                     break;
                 case 3:
-                    System.out.println("realizar troco");
+                    System.out.println("Realizar solicitação de troco");
+                    troco = new Troco(tckMachine.getSaldo());
                     break;
                 default:
                     System.out.println("NENHUM MENU ENCONTRADO!!!");

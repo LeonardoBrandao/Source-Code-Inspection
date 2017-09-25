@@ -15,7 +15,7 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        TicketMachine tckMachine = new TicketMachine(0);
+        TicketMachine tckMachine = new TicketMachine(20);
         int menu;
         int valorDinheiro;
         int exit;
@@ -46,7 +46,9 @@ public class Main {
                     System.out.println("Saldo atual " + tckMachine.getSaldo());
                     break;
                 case 2:
-                    System.out.println("realizar emitir");
+                    System.out.println("Em processo de geração de Ticket....");
+                    System.out.println(tckMachine.imprimir());
+                    System.out.println("Por favor retire o Ticket!");
                     break;
                 case 3:
                     System.out.println("realizar troco");

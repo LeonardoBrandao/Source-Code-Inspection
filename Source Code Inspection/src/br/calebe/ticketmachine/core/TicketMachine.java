@@ -24,7 +24,7 @@ public class TicketMachine {
     public void inserir(int quantia) {
         try {
             boolean achou = false;
-            
+
             for (int i = 0; i < papelMoeda.length && !achou; i++) {
                 if (papelMoeda[i] == quantia) {
                     achou = true;
@@ -41,11 +41,11 @@ public class TicketMachine {
             System.out.println("Sua nota não foi aceita! Por favor retirar! "
                     + "Digite 1 para informar que retirou sua nota!!");
             int retirou = in.nextInt();
-            
-            while(retirou != 1){
+
+            while (retirou != 1) {
                 System.out.println("Por favor retirar a nota!");
                 retirou = in.nextInt();
-            }             
+            }
         }
     }
 
@@ -57,13 +57,21 @@ public class TicketMachine {
         return null;
     }
 
-    public String imprimir() throws SaldoInsuficienteException {
-        if (saldo < valor) {
-            throw new SaldoInsuficienteException();
+    public String imprimir() {
+        try {
+            if (saldo < valor) {
+                throw new SaldoInsuficienteException();
+            } 
+            
+            this.saldo -= this.valor;
+            
+            String result = "*****************\n";
+            result += "*** R$ " + saldo + ",00 ***\n";
+            result += "*****************\n";
+            return result;
+        } catch (SaldoInsuficienteException e) {
+            System.out.println("Saldo insuficiente");
+            return null;
         }
-        String result = "*****************\n";
-        result += "*** R$ " + saldo + ",00 ****\n";
-        result += "*****************\n";
-        return result;
     }
 }

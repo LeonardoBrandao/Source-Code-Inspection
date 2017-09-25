@@ -53,23 +53,31 @@ public class TicketMachine {
         return saldo;
     }
 
-    public Iterator<Integer> getTroco() {
-        return null;
+    public void getTroco() {
+        if(this.saldo > 0) {
+            System.out.println("Troco devolvido, retire seus R$" + this.saldo + " na máquina.");
+            this.saldo = 0;
+        } else {
+            System.out.println("Não há troco para ser retirado.");
+        }
     }
 
     public String imprimir() throws SaldoInsuficienteException{
         try {
             if (saldo < valor) {
                 throw new SaldoInsuficienteException("Seu saldo é menor que o valor do Ticket!");
-            } 
+            }
             
             this.saldo -= this.valor;
-            
+                        
             String result = "*****************\n";
+            result += "Retire seu bilhete!\n";
+            result += "*****************\n";
             result += "Saldo restante:\n";
             result += "*** R$ " + saldo + ",00 ***\n";
             result += "*****************\n";
             return result;
+            
         } catch (SaldoInsuficienteException e) {
             System.out.println(e.getMessage());
             return null;

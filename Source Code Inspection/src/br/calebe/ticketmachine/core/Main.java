@@ -48,16 +48,13 @@ public class Main {
                     System.out.println("Digite o valor que deseja inserir de dinheiro");
                     valorDinheiro = in.nextInt();
                     tckMachine.inserir(valorDinheiro);
-                    System.out.println(separador);
-                    System.out.println("Saldo atual " + tckMachine.getSaldo());
                     break;
                 case 2:
                     tckMachine.imprimir();
                     break;
                 case 3:
-                    System.out.println("Realizar solicitação de troco");
-                    troco = new Troco(tckMachine.getSaldo());
-                    troco.getIterator();
+                    System.out.println("Realizando solicitação de troco...");
+                    tckMachine.getTroco();
                     break;
                 case 4:
                     if (tckMachine.getSaldo() > 0) {

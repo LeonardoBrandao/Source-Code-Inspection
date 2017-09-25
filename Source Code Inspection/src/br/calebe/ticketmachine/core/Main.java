@@ -17,7 +17,8 @@ public class Main {
         Scanner in = new Scanner(System.in);
         TicketMachine tckMachine = new TicketMachine(0);
         int menu;
-
+        int valorDinheiro;
+        int exit;
         while (true) {
             String separador = "*****************";
 
@@ -25,7 +26,6 @@ public class Main {
             System.out.println("SALDO ATUAL R$ " + tckMachine.getSaldo() + ",00");
             System.out.println(separador);
 
-            System.out.println(separador);
             System.out.println("MENU");
             System.out.println(separador);
             System.out.println("1 - Inserir saldo");
@@ -39,7 +39,11 @@ public class Main {
 
             switch (menu) {
                 case 1:
-                    System.out.println("realizar metodo para criação de inseri saldo");
+                    System.out.println("Digite o valor que deseja inserir de dinheiro");
+                    valorDinheiro = in.nextInt();
+                    tckMachine.inserir(valorDinheiro);
+                    System.out.println(separador);
+                    System.out.println("Saldo atual " + tckMachine.getSaldo());
                     break;
                 case 2:
                     System.out.println("realizar emitir");
@@ -49,6 +53,18 @@ public class Main {
                     break;
                 default:
                     System.out.println("NENHUM MENU ENCONTRADO!!!");
+            }
+
+            System.out.println(separador);
+            System.out.println("Deseja continuar utilizando o sistema? 1 - Sim ou 0 - Não");
+            exit = in.nextInt();
+            while (exit != 0 && exit != 1) {
+                System.out.println("Deseja continuar ustilizando o sistema? 1 - Sim ou 0 - Não");
+                exit = in.nextInt();
+            }
+
+            if (exit == 0) {
+                break;
             }
         }
     }

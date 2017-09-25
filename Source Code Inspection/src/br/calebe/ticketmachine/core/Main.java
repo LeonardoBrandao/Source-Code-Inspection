@@ -61,6 +61,8 @@ public class Main {
                 case 3:
                     System.out.println("Realizar solicitação de troco");
                     troco = new Troco(tckMachine.getSaldo());
+                    troco.getIterator().remove();
+                    
                     break;
                 default:
                     System.out.println("NENHUM MENU ENCONTRADO!!!");

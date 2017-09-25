@@ -6,9 +6,23 @@ import java.util.Iterator;
  *
  * @author Calebe de Paula Bianchini
  */
-class Troco {
+final class Troco {
 
     protected PapelMoeda[] papeisMoeda;
+
+    /**
+     * @return the papeisMoeda
+     */
+    public PapelMoeda[] getPapeisMoeda() {
+        return papeisMoeda;
+    }
+
+    /**
+     * @param papeisMoeda the papeisMoeda to set
+     */
+    public void setPapeisMoeda(PapelMoeda[] papeisMoeda) {
+        this.papeisMoeda = papeisMoeda;
+    }
 
     public Troco(int valor) {
         papeisMoeda = new PapelMoeda[6];
@@ -42,6 +56,8 @@ class Troco {
             count++;
         }
         papeisMoeda[1] = new PapelMoeda(2, count);
+
+        this.setPapeisMoeda(papeisMoeda);
     }
 
     public Iterator<PapelMoeda> getIterator() {
@@ -75,6 +91,7 @@ class Troco {
                     troco.papeisMoeda[i] = null;
                 }
             }
+            System.out.println(ret.getQuantidade());
             return ret;
         }
 

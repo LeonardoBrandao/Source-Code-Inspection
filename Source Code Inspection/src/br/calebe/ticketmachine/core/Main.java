@@ -10,14 +10,13 @@ import java.util.Scanner;
 
 /**
  *
- * @author Felipe
+ * @author Felipe, Leonardo
  */
 public class Main {
 
     public static void main(String[] args) throws SaldoInsuficienteException {
         Scanner in = new Scanner(System.in);
         TicketMachine tckMachine = new TicketMachine(20);
-        Troco troco;
         
         int menu;
         int valorDinheiro;

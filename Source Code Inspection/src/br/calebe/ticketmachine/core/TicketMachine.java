@@ -57,20 +57,21 @@ public class TicketMachine {
         return null;
     }
 
-    public String imprimir() {
+    public String imprimir() throws SaldoInsuficienteException{
         try {
             if (saldo < valor) {
-                throw new SaldoInsuficienteException();
+                throw new SaldoInsuficienteException("Foi constatado que seu saldo é menor que o valor do Ticket!");
             } 
             
             this.saldo -= this.valor;
             
             String result = "*****************\n";
+            result += "Saldo restante:\n";
             result += "*** R$ " + saldo + ",00 ***\n";
             result += "*****************\n";
             return result;
         } catch (SaldoInsuficienteException e) {
-            System.out.println("Saldo insuficiente");
+            System.out.println(e.getMessage());
             return null;
         }
     }

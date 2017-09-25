@@ -60,7 +60,7 @@ public class TicketMachine {
     public String imprimir() throws SaldoInsuficienteException{
         try {
             if (saldo < valor) {
-                throw new SaldoInsuficienteException("Foi constatado que seu saldo é menor que o valor do Ticket!");
+                throw new SaldoInsuficienteException("Seu saldo é menor que o valor do Ticket!");
             } 
             
             this.saldo -= this.valor;

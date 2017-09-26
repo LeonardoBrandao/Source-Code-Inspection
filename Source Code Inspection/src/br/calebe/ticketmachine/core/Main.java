@@ -6,6 +6,7 @@
 package br.calebe.ticketmachine.core;
 
 import br.calebe.ticketmachine.exception.SaldoInsuficienteException;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -17,10 +18,10 @@ public class Main {
     public static void main(String[] args) throws SaldoInsuficienteException {
         Scanner in = new Scanner(System.in);
         TicketMachine tckMachine = new TicketMachine(20);
-        
+        Troco troco;
         int menu;
         int valorDinheiro;
-        
+
         outer:
         while (true) {
             String separador = "*****************";
@@ -53,7 +54,15 @@ public class Main {
                     break;
                 case 3:
                     System.out.println("Realizando solicitação de troco...");
-                    tckMachine.getTroco();
+                    troco = new Troco(tckMachine.getSaldo());
+                    List<PapelMoeda> papel = troco.getValorQtd();
+                    for (PapelMoeda p : papel) {
+                        if (p.getQuantidade() > 0) {
+                            System.out.println("Valor da nota: " + p.getValor());
+                            System.out.println("Quantidade de notas: " + p.getQuantidade());
+                        }
+                    }
+                    tckMachine.zerarSaldo();
                     break;
                 case 4:
                     if (tckMachine.getSaldo() > 0) {
@@ -66,8 +75,6 @@ public class Main {
                     System.out.println(separador);
                     System.out.println("Opção inválida.");
             }
-
-            
         }
     }
 }

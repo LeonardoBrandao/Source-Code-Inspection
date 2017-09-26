@@ -53,13 +53,8 @@ public class TicketMachine {
         return saldo;
     }
 
-    public void getTroco() {
-        if(this.saldo > 0) {
-            System.out.println("Troco devolvido, retire seus R$" + this.saldo + " na máquina.");
-            this.saldo = 0;
-        } else {
-            System.out.println("Não há troco para ser retirado.");
-        }
+    public void zerarSaldo() {
+        this.saldo = 0;
     }
 
     public String imprimir() throws SaldoInsuficienteException{

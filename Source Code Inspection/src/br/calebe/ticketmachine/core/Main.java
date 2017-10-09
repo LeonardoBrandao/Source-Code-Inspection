@@ -53,16 +53,15 @@ public class Main {
                     tckMachine.imprimir();
                     break;
                 case 3:
-                    System.out.println("Realizando solicitação de troco...");
-                    troco = new Troco(tckMachine.getSaldo());
-                    List<PapelMoeda> papel = troco.getValorQtd();
-                    for (PapelMoeda p : papel) {
-                        if (p.getQuantidade() > 0) {
-                            System.out.println("Valor da nota: " + p.getValor());
-                            System.out.println("Quantidade de notas: " + p.getQuantidade());
-                        }
+                    if(tckMachine.getSaldo() > 0) {
+                        System.out.println("Realizando solicitação de troco...");
+                        System.out.println("Confira seu troco!");
+                        tckMachine.getTroco(tckMachine.getSaldo());
+                        tckMachine.zerarSaldo();
+                    } else {
+                        System.out.println("Não há troco para ser retirado.");
                     }
-                    tckMachine.zerarSaldo();
+                    
                     break;
                 case 4:
                     if (tckMachine.getSaldo() > 0) {
